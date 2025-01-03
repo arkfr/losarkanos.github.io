@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartas con Mensajes Personalizados y Discord</title>
+  <style>
+    body {
+      background: url('imagenes/fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      padding: 0px;
+      margin: 10px;
+      width: 50px;
+      text-align: center;
+      display: inline-block;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      max-height: 150px;
+      margin-right: 10px;
+    }
+    
+
+    #inputId {
+      margin: 10px;
+      padding: 5px;
+    }
+
+    h1 {
+      color: #ff0000;
+    }
+
+    /* Nuevo estilo para mostrar la carta seleccionada en grande */
+    #cartaSeleccionada {
+      display: none;
+      text-align: center;
+    }
+
+    #cartaSeleccionadaImg {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px; /* Ajusta según tus preferencias */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>L@S ARKAN@S RECOMPENSAS DIARIAS</h1>
+  
+
+  <!-- Campo de entrada para la ID -->
+  <label for="inputId">Número:</label>
+  <input type="text" id="inputId" placeholder="Ingrese un número">
+
+  <!-- Botón para seleccionar carta al azar -->
+  <button onclick="animarYSeleccionarCarta()">Seleccionar carta al azar</button>
+  <div id="cartaSeleccionada">
+    <img id="cartaSeleccionadaImg" src="" alt="Carta seleccionada">
+  </div>
+
+  <h2>              </h2>
+
+  <!-- Cartas -->
+  <div class="card" id="carta1" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Wood.PrimalItemResource_Wood'' 400 1 0">
+    <img src="imagenes\madera.png" alt="Carta 1" class="cartaProvisional" style="display: none;">
+    <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+  
+  </div>
+  <div class="card" id="carta2" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Consumables/PrimalItemConsumable_HealSoup.PrimalItemConsumable_HealSoup'' 100 1 0">
+  <img src="imagenes\pocion.png" alt="Carta 2" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+  <div class="card" id="carta3" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Silicon.PrimalItemResource_Silicon'' 60 1 0">
+  <img src="imagenes\perlas blancas.png" alt="Carta 3" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+  <div class="card" id="carta4" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_MetalIngot.PrimalItemResource_MetalIngot'' 500 1 0">
+  <img src="imagenes\lingote.png" alt="Carta 4" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+<div class="card" id="carta5" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Thylacoleo/Thylacoleo_Character_BP.Thylacoleo_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_ThylacoSaddle.PrimalItemArmor_ThylacoSaddle'' 150 1 0 0 R">
+  <img src="imagenes\thylacoleo.png" alt="Carta 5" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+  <div class="card" id="carta8" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_BlackPearl.PrimalItemResource_BlackPearl'' 100 1 0">
+  <img src="imagenes\perlas negra.png" alt="Carta 8" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+  <div class="card" id="carta6" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Crystal.PrimalItemResource_Crystal'' 200 1 0">
+  <img src="imagenes\cristal.png" alt="Carta 6" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+<div class="card" id="carta7" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Electronics.PrimalItemResource_Electronics'' 100 1 0">
+  <img src="imagenes\electronica.png" alt="Carta 7" class="cartaProvisional" style="display: none;">
+   <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+<div class="card" id="carta10" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Gasoline.PrimalItemResource_Gasoline'' 100 1 0">
+  <img src="imagenes\gasoline.png" alt="Carta 10" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+
+  <h3>              </h3>
+
+</div>
+<div class="card" id="carta9" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_ApexDrop_Giga.PrimalItemResource_ApexDrop_Giga'' 1 1 0">
+<img src="imagenes\corazon.png" alt="Carta 11" class="cartaProvisional" style="display: none;">
+<img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+<div class="card" id="carta10" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Metal/PrimalItemArmor_MetalShirt.PrimalItemArmor_MetalShirt'' 1 3 0">
+<img src="imagenes\pechera.png" alt="Carta 10" class="cartaProvisional" style="display: none;">
+<img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+<div class="card" id="carta12" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Consumables/PrimalItemConsumable_Narcotic.PrimalItemConsumable_Narcotic'' 200 1 0">
+  <img src="imagenes\narco.png" alt="Carta 12" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+<div class="card" id="carta13" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Polymer.PrimalItemResource_Polymer'' 100 1 0">
+  <img src="imagenes\polymer.png" alt="Carta 13" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+  <div class="card" id="carta14" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Baryonyx/Baryonyx_Character_BP.Baryonyx_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_BaryonyxSaddle.PrimalItemArmor_BaryonyxSaddle'' 150 1 0 0 R">
+    <img src="imagenes\bariony.png" alt="Carta 14" class="cartaProvisional" style="display: none;">
+    <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+  
+  </div>
+  <div class="card" id="carta15" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Weapons/PrimalItemAmmo_TranqDart.PrimalItemAmmo_TranqDart'' 150 1 0">
+    <img src="imagenes\tranquilizer-dart.png" alt="Carta 15" class="cartaProvisional" style="display: none;">
+    <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+  </div>
+  <div class="card" id="carta16" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Weapons/PrimalItem_WeaponOneShotRifle.PrimalItem_WeaponOneShotRifle'' 1 4 0">
+    <img src="imagenes\longneck-rifle.png" alt="Carta 16" class="cartaProvisional" style="display: none;">
+    <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+  
+  </div>
+  <div class="card" id="carta17" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/StructuresPlus/Misc/DedicatedStorage/PrimalItemStructure_DedicatedStorage.PrimalItemStructure_DedicatedStorage'' 1 1 0">
+    <img src="imagenes\tek-dedicated-storage.png" alt="Carta 17" class="cartaProvisional" style="display: none;">
+    <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+  </div>
+    <div class="card" id="carta18" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Weapons/PrimalItem_WeaponMachinedShotgun.PrimalItem_WeaponMachinedShotgun'' 1 1 0">
+      <img src="imagenes\corredera.png" alt="Carta 18" class="cartaProvisional" style="display: none;">
+      <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+  </div>
+
+<h4>              </h4>
+
+<div class="card" id="carta11" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Spino/Spino_Character_BP.Spino_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_SpinoSaddle.PrimalItemArmor_SpinoSaddle'' 150 1 0 0 M">
+  <img src="imagenes\spino.png" alt="Carta 13" class="cartaProvisional" style="display: none;">
+  <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+</div>
+ <div class="card" id="carta19" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Element.PrimalItemResource_Element'' 5 1 0">
+    <img src="imagenes\element.png" alt="Carta 19" class="cartaProvisional" style="display: none;">
+    <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+  </div>
+  <div class="card" id="carta20" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_ApexDrop_Spino.PrimalItemResource_ApexDrop_Spino'' 1 1 0">
+     <img src="imagenes\spinosaurus-aleta.png" alt="Carta 20" class="cartaProvisional" style="display: none;">
+     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+    </div>
+     <div class="card" id="carta21" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/Dinos/Achatina/PrimalItemResource_SnailPaste.PrimalItemResource_SnailPaste'' 100 1 0">
+      <img src="imagenes\achatina-paste.png" alt="Carta 21" class="cartaProvisional" style="display: none;">
+      <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+    </div>
+    <div class="card" id="carta22" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/Test/PrimalItem_WeaponMagnifyingGlass.PrimalItem_WeaponMagnifyingGlass'' 1 1 0">
+     <img src="imagenes\lupaglass.png" alt="Carta 22" class="cartaProvisional" style="display: none;">
+     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+    </div>
+    <div class="card" id="carta23" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/Dinos/Achatina/PrimalItemResource_SnailPaste.PrimalItemResource_SnailPaste'' 100 1 0">
+     <img src="imagenes\achatina-paste.png" alt="Carta 2" class="cartaProvisional" style="display: none;">
+     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+    </div>
+    <div class="card" id="carta24" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/SCUBA/PrimalItemArmor_ScubaShirt_SuitWithTank.PrimalItemArmor_ScubaShirt_SuitWithTank'' 1 3 0">
+     <img src="imagenes\scuba-tank.png" alt="Carta 24" class="cartaProvisional" style="display: none;">
+     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+    </div>
+    <div class="card" id="carta25" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Fur/PrimalItemArmor_FurShirt.PrimalItemArmor_FurShirt'' 1 3 0">
+     <img src="imagenes\pecherpelaje.png" alt="Carta 25" class="cartaProvisional" style="display: none;">
+     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+
+    </div>
+    <div class="card" id="carta26" data-mensaje="GiveItem id eos 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Ghillie/PrimalItemArmor_GhillieShirt.PrimalItemArmor_GhillieShirt'' 1 3 0">
+     <img src="imagenes\camuflaje.png" alt="Carta 26" class="cartaProvisional" style="display: none;">
+     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
+</div>
+
+  
+  <script>
+    function animarYSeleccionarCarta() {
+      var inputId = document.getElementById("inputId");
+
+      if (inputId.value.trim() === "") {
+        alert("Por favor, ingrese un número en el campo.");
+        return;
+      }
+
+      var cartas = document.getElementsByClassName("card");
+
+      var indice = 0;
+      var animacionInterval = setInterval(function () {
+        cartas[indice].style.transform = "translateY(-20px)";
+        indice++;
+        if (indice === cartas.length) {
+          indice = 0;
+          setTimeout(function () {
+            for (var i = 0; i < cartas.length; i++) {
+              cartas[i].style.transform = "translateY(0)";
+            }
+          }, 500);
+        }
+      }, 100);
+
+      
+
+      setTimeout(function () {
+        clearInterval(animacionInterval);
+
+        var indiceAzar = Math.floor(Math.random() * cartas.length);
+        var mensaje = cartas[indiceAzar].getAttribute("data-mensaje");
+        var imagenCarta = cartas[indiceAzar].querySelector("img").src;
+        var numeroIngresado = inputId.value || 'NUMERO_DEFAULT';
+        mensaje = mensaje.replace(/id eos/g, numeroIngresado);
+
+        alert("L@S ARKAN@S \nGRACIAS POR PARTICIPAR \nRECUERDA TENER TU ARK ASCENDER ABIERTO");
+
+        mostrarCartaSeleccionada(imagenCarta);
+
+        enviarMensajeADiscord(mensaje);
+      }, 4000);
+    }
+
+    function mostrarCartaSeleccionada(imagen) {
+      var cartaSeleccionadaImg = document.getElementById("cartaSeleccionadaImg");
+      cartaSeleccionadaImg.src = imagen;
+      document.getElementById("cartaSeleccionada").style.display = "block";
+    }
+
+    function enviarMensajeADiscord(mensaje) {
+      var webhookURL = "https://discord.com/api/webhooks/1181712146111930408/rUQG5foU9-ZvsFbfqALao0pQjIqA9zT5nbtuqsH092M1pDGoBF2KBvo9okjgDSeWYaSP";
+
+      var payload = {
+        content: mensaje
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok) {
+          console.error("Error al enviar mensaje a Discord:", response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error("Error al enviar mensaje a Discord:", error);
+      });
+    }
+
+    function enviarMensajeADiscord(mensaje) {
+      // URL del Webhook de Discord
+      var webhookURL = "https://discord.com/api/webhooks/1181712146111930408/rUQG5foU9-ZvsFbfqALao0pQjIqA9zT5nbtuqsH092M1pDGoBF2KBvo9okjgDSeWYaSP";
+
+      // Mensaje a enviar
+      var payload = {
+        content: mensaje
+      };
+
+      // Realizar la solicitud HTTP POST
+
+fetch(webhookURL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(payload)
+})
+.then(response => {
+  if (!response.ok) {
+    console.error("Error al enviar mensaje a Discord:", response.statusText);
+  }
+})
+.catch(error => {
+  console.error("Error al enviar mensaje a Discord:", error);
+});
+}
+</script>
+
+</body>
+</html>
