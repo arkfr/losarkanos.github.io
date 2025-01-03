@@ -28,7 +28,6 @@
       max-height: 150px;
       margin-right: 10px;
     }
-    
 
     #inputId {
       margin: 10px;
@@ -50,16 +49,30 @@
       height: auto;
       max-height: 200px; /* Ajusta según tus preferencias */
     }
+
+    select {
+      margin: 10px;
+      padding: 5px;
+    }
   </style>
 </head>
 <body>
 
   <h1>L@S ARKAN@S RECOMPENSAS DIARIAS</h1>
-  
 
   <!-- Campo de entrada para la ID -->
-  <label for="inputId">Número:</label>
+  <label for="inputId">Numero eos:</label>
   <input type="text" id="inputId" placeholder="Ingrese un número">
+
+  <!-- Dropdown para elegir el Webhook -->
+  <label for="webhookSelect">Elige tu mapa:</label>
+  <select id="webhookSelect">
+    <option value="https://discord.com/api/webhooks/1181712146111930408/rUQG5foU9-ZvsFbfqALao0pQjIqA9zT5nbtuqsH092M1pDGoBF2KBvo9okjgDSeWYaSP">The insland</option>
+    <option value="https://discord.com/api/webhooks/1247900830669996125/uKFa0Bem9oDCk2anM8qvvPQZWfEWrZgW_M0bXJ18C0a73ihGSPh2B3KD2zaa8BIurYHl">The center</option>
+    <option value="https://discord.com/api/webhooks/1099299929593225326/LJzibS2z4EjQ0MzN-4EL4bbpokA3eqB9XjJGv_ozUlFEVvFwTE5ItRxEB0Gm1OBFg9Ju">Aberration</option>
+    <option value="https://discord.com/api/webhooks/1225222534606229564/2c3j5qEfk5WOIDaqQkKCoc_XDYTt0UIrZekkkHYdJykHtxIymobV3YqnZRM2HqeDDC63">Scorched</option>
+    <option value="">Extincion</option>
+  </select>
 
   <!-- Botón para seleccionar carta al azar -->
   <button onclick="animarYSeleccionarCarta()">Seleccionar carta al azar</button>
@@ -211,7 +224,6 @@
      <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
 </div>
 
-  
   <script>
     function animarYSeleccionarCarta() {
       var inputId = document.getElementById("inputId");
@@ -237,8 +249,6 @@
         }
       }, 100);
 
-      
-
       setTimeout(function () {
         clearInterval(animacionInterval);
 
@@ -252,7 +262,8 @@
 
         mostrarCartaSeleccionada(imagenCarta);
 
-        enviarMensajeADiscord(mensaje);
+        var webhookURL = document.getElementById("webhookSelect").value;
+        enviarMensajeADiscord(mensaje, webhookURL);
       }, 4000);
     }
 
@@ -262,9 +273,7 @@
       document.getElementById("cartaSeleccionada").style.display = "block";
     }
 
-    function enviarMensajeADiscord(mensaje) {
-      var webhookURL = "https://discord.com/api/webhooks/1181712146111930408/rUQG5foU9-ZvsFbfqALao0pQjIqA9zT5nbtuqsH092M1pDGoBF2KBvo9okjgDSeWYaSP";
-
+    function enviarMensajeADiscord(mensaje, webhookURL) {
       var payload = {
         content: mensaje
       };
@@ -285,35 +294,8 @@
         console.error("Error al enviar mensaje a Discord:", error);
       });
     }
-
-    function enviarMensajeADiscord(mensaje) {
-      // URL del Webhook de Discord
-      var webhookURL = "https://discord.com/api/webhooks/1181712146111930408/rUQG5foU9-ZvsFbfqALao0pQjIqA9zT5nbtuqsH092M1pDGoBF2KBvo9okjgDSeWYaSP";
-
-      // Mensaje a enviar
-      var payload = {
-        content: mensaje
-      };
-
-      // Realizar la solicitud HTTP POST
-
-fetch(webhookURL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(payload)
-})
-.then(response => {
-  if (!response.ok) {
-    console.error("Error al enviar mensaje a Discord:", response.statusText);
-  }
-})
-.catch(error => {
-  console.error("Error al enviar mensaje a Discord:", error);
-});
-}
-</script>
+  </script>
 
 </body>
 </html>
+
