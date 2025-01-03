@@ -14,7 +14,7 @@
 
     .card {
       border: 1px solid #ccc;
-      padding: 0px;
+      padding: 10px;
       margin: 10px;
       width: 50px;
       text-align: center;
@@ -35,7 +35,10 @@
     }
 
     h1 {
-      color: #ff0000;
+      color: #050000;
+      background: linear-gradient(to right, red, orange);
+      margin-left: 300px;
+      margin-right: 300px
     }
 
     /* Nuevo estilo para mostrar la carta seleccionada en grande */
@@ -59,13 +62,34 @@
 <body>
 
   <h1>L@S ARKAN@S RECOMPENSAS DIARIAS</h1>
+  <style>
+    .eos {
+      background: linear-gradient(to right, WHITE, WHITE);
+      -webkit-background-clip: content-box;
+      -webkit-text-fill-color: black;
+      font-weight: 1000;
+      margin-left: 100px
+    }
+  </style>
 
+<style>
+  .label-mapa {
+    background: linear-gradient(to right, WHITE, WHITE);
+    -webkit-background-clip: content-box;
+    -webkit-text-fill-color: black;
+    font-weight: 700;
+    margin-left: 100px; 
+  }
+</style>
   <!-- Campo de entrada para la ID -->
-  <label for="inputId">Numero eos:</label>
-  <input type="text" id="inputId" placeholder="Ingrese un número">
+  <label for="inputId" class="eos">NUMERO EOS:</label>
+ 
+  <input type="text" id="inputId" placeholder="Ingrese su número">
+
+
 
   <!-- Dropdown para elegir el Webhook -->
-  <label for="webhookSelect">Elige tu mapa:</label>
+  <label for="webhookSelect" class="label-mapa">ELIGE TU MAPA:</label>
   <select id="webhookSelect">
     <option value="https://discord.com/api/webhooks/1181712146111930408/rUQG5foU9-ZvsFbfqALao0pQjIqA9zT5nbtuqsH092M1pDGoBF2KBvo9okjgDSeWYaSP">The insland</option>
     <option value="https://discord.com/api/webhooks/1247900830669996125/uKFa0Bem9oDCk2anM8qvvPQZWfEWrZgW_M0bXJ18C0a73ihGSPh2B3KD2zaa8BIurYHl">The center</option>
@@ -103,7 +127,7 @@
   <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
 
 </div>
-<div class="card" id="carta5" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Thylacoleo/Thylacoleo_Character_BP.Thylacoleo_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_ThylacoSaddle.PrimalItemArmor_ThylacoSaddle'' 150 1 0 0 R">
+<div class="card" id="carta5" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Thylacoleo/Thylacoleo_Character_BP.Thylacoleo_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_ThylacoSaddle.PrimalItemArmor_ThylacoSaddle'' 1 450 1.0 1 0 0 0 R">
   <img src="imagenes\thylacoleo.png" alt="Carta 5" class="cartaProvisional" style="display: none;">
   <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
 
@@ -152,7 +176,7 @@
   <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
 
 </div>
-  <div class="card" id="carta14" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Baryonyx/Baryonyx_Character_BP.Baryonyx_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_BaryonyxSaddle.PrimalItemArmor_BaryonyxSaddle'' 150 1 0 0 R">
+  <div class="card" id="carta14" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Baryonyx/Baryonyx_Character_BP.Baryonyx_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_BaryonyxSaddle.PrimalItemArmor_BaryonyxSaddle'' 1 450 1.0 1 0 0 0 R">
     <img src="imagenes\bariony.png" alt="Carta 14" class="cartaProvisional" style="display: none;">
     <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
   
@@ -179,7 +203,7 @@
 
 <h4>              </h4>
 
-<div class="card" id="carta11" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Spino/Spino_Character_BP.Spino_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_SpinoSaddle.PrimalItemArmor_SpinoSaddle'' 150 1 0 0 M">
+<div class="card" id="carta11" data-mensaje="ES.SpawnDinoFor id eos 'Blueprint'/Game/PrimalEarth/Dinos/Spino/Spino_Character_BP.Spino_Character_BP'' 'Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Saddles/PrimalItemArmor_SpinoSaddle.PrimalItemArmor_SpinoSaddle'' 1 450 1.0 1 0 0 0 R">
   <img src="imagenes\spino.png" alt="Carta 13" class="cartaProvisional" style="display: none;">
   <img src="imagenes\madera.jpg" alt="Imagen real" class="cartaReal">
 
